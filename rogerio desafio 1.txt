@@ -1,0 +1,23 @@
+package org.example;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        try (Scanner scanner = new Scanner(System.in)) {
+
+            System.out.println("Responda com S para sim ou N para não");
+
+            System.out.println("Você está com fome?");
+            String resposta1 = scanner.nextLine().trim();
+
+            System.out.println("Você tem dinheiro?");
+            String resposta2 = scanner.nextLine().trim();
+
+            if (resposta1.equalsIgnoreCase(resposta2)) {
+                System.out.println("Vá à tenda da Dona Maricreusa que ela vende comida boa!");
+            }
+        }
+    }
+}
