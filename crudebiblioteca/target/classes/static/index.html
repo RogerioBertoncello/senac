@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f3ee">
+    <title>Biblioteca | Acervo</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+    <a class="brand" href="/" aria-label="Biblioteca, página inicial">
+        <span class="brand-mark" aria-hidden="true">B</span>
+        <span>Biblioteca<span class="brand-subtitle">Acervo e catálogo</span></span>
+    </a>
+    <span class="topbar-note">GESTÃO DO ACERVO</span>
+</header>
+
+<main class="page">
+    <section class="intro">
+        <p class="eyebrow">SISTEMA DA BIBLIOTECA</p>
+        <h1>Seu acervo, <em>em ordem.</em></h1>
+        <p>Consulte, cadastre e mantenha seus livros sempre atualizados.</p>
+    </section>
+
+    <section class="panel search-panel" aria-labelledby="search-heading">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">CATÁLOGO</p>
+                <h2 id="search-heading">Encontre um livro</h2>
+            </div>
+            <span class="book-count" id="book-count">Carregando...</span>
+        </div>
+        <form id="search-form" class="search-grid">
+            <label class="field">
+                <span>Título</span>
+                <input name="titulo" type="search" placeholder="Ex.: Dom Casmurro">
+            </label>
+            <label class="field">
+                <span>Autor</span>
+                <input name="autor" type="search" placeholder="Ex.: Machado de Assis">
+            </label>
+            <label class="field">
+                <span>ISBN</span>
+                <input name="isbn" type="search" placeholder="Ex.: 9788535910663">
+            </label>
+            <div class="search-actions">
+                <button class="button button-primary" type="submit">Buscar livros</button>
+                <button class="button button-quiet" id="clear-search" type="button">Limpar</button>
+            </div>
+        </form>
+        <p class="notice" id="search-notice" role="status" aria-live="polite"></p>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>Livro</th>
+                    <th>ISBN</th>
+                    <th>Ano</th>
+                    <th>Exemplares</th>
+                    <th class="actions-heading">Ações</th>
+                </tr>
+                </thead>
+                <tbody id="book-list">
+                <tr><td class="empty-state" colspan="5">Carregando acervo...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="panel form-panel" aria-labelledby="form-heading">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">GERENCIAMENTO</p>
+                <h2 id="form-heading">Adicionar ao acervo</h2>
+            </div>
+            <span class="form-badge" id="form-mode">NOVO LIVRO</span>
+        </div>
+        <p class="form-description" id="form-description">Preencha os dados para cadastrar um livro na biblioteca.</p>
+        <form id="book-form">
+            <input name="id" type="hidden">
+            <div class="book-fields">
+                <label class="field field-title">
+                    <span>Título <b aria-hidden="true">*</b></span>
+                    <input name="titulo" required maxlength="200" placeholder="Título do livro">
+                </label>
+                <label class="field">
+                    <span>Autor <b aria-hidden="true">*</b></span>
+                    <input name="autor" required maxlength="150" placeholder="Nome do autor">
+                </label>
+                <label class="field">
+                    <span>ISBN <b aria-hidden="true">*</b></span>
+                    <input name="isbn" required maxlength="20" placeholder="Código ISBN">
+                </label>
+                <label class="field">
+                    <span>Ano de publicação <b aria-hidden="true">*</b></span>
+                    <input name="anoPublicacao" type="number" required min="0" step="1" placeholder="Ex.: 2024">
+                </label>
+                <label class="field">
+                    <span>Exemplares disponíveis <b aria-hidden="true">*</b></span>
+                    <input name="quantidade" type="number" required min="0" step="1" placeholder="Ex.: 5">
+                </label>
+            </div>
+            <p class="notice" id="form-notice" role="status" aria-live="polite"></p>
+            <div class="form-actions">
+                <button class="button button-primary" id="save-book" type="submit">Cadastrar livro</button>
+                <button class="button button-quiet" id="cancel-edit" type="button" hidden>Cancelar edição</button>
+            </div>
+        </form>
+    </section>
+    <footer>Um bom livro sempre encontra seu lugar.</footer>
+</main>
+</body>
+</html>
