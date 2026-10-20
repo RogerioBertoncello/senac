@@ -1,0 +1,44 @@
+1 - O projeto foi organizado em camadas, sendo elas e suas responsabilidades:
+
+Controller: Recebe a requisição HTTP, valida a presença de parâmetros obrigatórios, extrai dados do cabeçalho e do corpo da mensagem, e delega os dados para o Service. 
+
+Service: Aplica as regras de negócio, realiza operações no banco de dados e retorna as respostas ao Controller. 
+
+Repository: Lida com a persistência de dados, fornecendo métodos para acessar e manipular os dados armazenados em um banco de dados ou qualquer outra fonte de dados. 
+
+Model: Representa a tabela do banco de dados, mapeando a classe Java para a tabela do banco de dados. 
+
+
+2 - POST
+Insert
+201 Created → Recurso criado com sucesso.
+400 Bad Request → Dados inválidos ou incompletos.
+409 Conflict → Violação de restrição (ex.: chave única duplicada).
+
+GET
+Select
+200 OK → Consulta realizada com sucesso.
+404 Not Found → Recurso não encontrado.
+400 Bad Request → Parâmetros inválidos na consulta.
+
+PUT
+Update
+200 OK → Atualização bem-sucedida (retorna o recurso atualizado).
+204 No Content → Atualização bem-sucedida sem retorno de corpo.
+404 Not Found → Recurso não encontrado.
+400 Bad Request → Dados inválidos.
+
+DELETE
+Delete
+200 OK → Exclusão bem-sucedida (com retorno de confirmação).
+204 No Content → Exclusão bem-sucedida sem retorno de corpo.
+404 Not Found → Recurso não encontrado.
+400 Bad Request → Parâmetros inválidos.
+
+
+3 - A validação no front-end serve apenas para a experiência do usuário (UX), enquanto a validação no back-end garante a segurança e a integridade do sistema.
+
+Exemplo de um ataque SQL Injection:
+
+Se o front-end apenas validar se o formato do e-mail está correto (ex: usuario@email.com), um atacante pode interceptar a requisição HTTP antes que ela chegue ao servidor e alterar o corpo do dado.
+Se o back-end aceitar o dado sem validar e construir a consulta ao banco de dados concatenando strings de forma insegura, temos uma vulnerabilidade.
